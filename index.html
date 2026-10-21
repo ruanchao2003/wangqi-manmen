@@ -190,9 +190,10 @@ button{font-family:inherit}
   color:rgba(255,235,190,.62);text-transform:uppercase;
 }
 /* 标题 logo 卡片：白底与素材严丝合缝，双层金线做“烫金卡”质感 */
-.cover-lockup{position:relative;z-index:3;display:flex;align-items:flex-end;justify-content:center}
+/* 标题卡单独居中；旺仔脱出流，不参与排版，避免把卡片推偏 */
+.cover-lockup{position:relative;z-index:3;width:min(60vw,258px)}
 .cover-logo{
-  position:relative;z-index:3;width:min(60vw,258px);
+  position:relative;z-index:3;width:100%;
   padding:11px 13px;border-radius:12px;
   background:linear-gradient(152deg,#FDF5E4,#F3E0B8);
   border:1px solid rgba(198,152,76,.6);
@@ -203,10 +204,10 @@ button{font-family:inherit}
   content:"";position:absolute;inset:5px;border:1px solid rgba(198,152,76,.26);
   border-radius:9px;pointer-events:none;
 }
-/* 旺仔：站在卡片右下角，轻轻晃 */
+/* 旺仔：绝对定位在卡片右外侧，卡片本身保持居中 */
 .cover-wangzai{
-  position:relative;z-index:4;
-  width:clamp(78px,21vw,100px);height:auto;margin-left:-14px;margin-bottom:1px;
+  position:absolute;z-index:4;left:calc(100% - 12px);bottom:2px;
+  width:clamp(74px,20vw,96px);height:auto;
   filter:drop-shadow(0 12px 18px rgba(0,0,0,.55));
   transform-origin:50% 92%;
   animation:wzBob 4.8s ease-in-out infinite;
@@ -217,7 +218,7 @@ button{font-family:inherit}
   font-family:var(--kai);font-size:clamp(13px,3.7vw,15.5px);
   line-height:2.05;letter-spacing:.1em;color:rgba(255,242,214,.78);
 }
-.cover-main .cta{margin-top:clamp(24px,4.4vh,38px)}
+.cover-main .cta{margin-top:clamp(30px,5.6vh,48px)}
 .seal{
   width:clamp(38px,9vw,46px);height:clamp(38px,9vw,46px);
   display:grid;place-items:center;margin-top:clamp(14px,2.6vh,22px);
@@ -266,6 +267,14 @@ button{font-family:inherit}
 .lantern:nth-child(2){animation-delay:-1.3s}
 .lantern:nth-child(3){animation-delay:-2.6s}
 .lantern svg{display:block;width:clamp(58px,17vw,84px);height:auto}
+/* 灯笼上的旺仔圆形贴纸 */
+.lamp-face{
+  position:absolute;left:50%;top:40.6%;width:42%;height:auto;
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  box-shadow:0 0 0 1.5px rgba(255,226,170,.9), 0 0 0 3.5px rgba(150,20,20,.35), 0 4px 10px rgba(60,6,6,.5);
+  transition:transform .6s var(--ease);
+}
+.lantern.on .lamp-face{transform:translate(-50%,-50%) scale(1.04)}
 .lantern.on{opacity:1;filter:drop-shadow(0 8px 24px rgba(255,120,60,.4))}
 .lantern:active{transform:scale(.96)}
 .lamp-glow{
@@ -840,9 +849,8 @@ button{font-family:inherit}
       <svg viewBox="0 0 160 12" fill="none"><path d="M0 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M102 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M80 1.5 85.5 6 80 10.5 74.5 6z" stroke="url(#gGold)" stroke-width="1"/><circle cx="68" cy="6" r="1.6" fill="#F0C97B"/><circle cx="92" cy="6" r="1.6" fill="#F0C97B"/></svg>
     </div>
     <p class="cover-sub reveal" style="--d:2">一盏灯，一纸红包，一句老话<br>愿你新岁：旺到家，旺到心里</p>
-    <div class="seal reveal" style="--d:3">旺</div>
-    <button class="cta reveal" style="--d:4" data-next>轻 触 开 启</button>
-    <p class="hint-up reveal" style="--d:5">上滑 / 滚动 进入</p>
+    <button class="cta reveal" style="--d:3" data-next>轻 触 开 启</button>
+    <p class="hint-up reveal" style="--d:4">上滑 / 滚动 进入</p>
   </div>
 </section>
 
@@ -857,14 +865,17 @@ button{font-family:inherit}
     <button class="lantern" data-lamp aria-label="第一盏灯">
       <span class="lamp-glow"></span>
       <svg viewBox="0 0 100 152"><use href="#lanternSym"/></svg>
+      <img class="lamp-face" src="wz-avatar.png" width="300" height="300" alt="">
     </button>
     <button class="lantern" data-lamp aria-label="第二盏灯">
       <span class="lamp-glow"></span>
       <svg viewBox="0 0 100 152"><use href="#lanternSym"/></svg>
+      <img class="lamp-face" src="wz-avatar.png" width="300" height="300" alt="">
     </button>
     <button class="lantern" data-lamp aria-label="第三盏灯">
       <span class="lamp-glow"></span>
       <svg viewBox="0 0 100 152"><use href="#lanternSym"/></svg>
+      <img class="lamp-face" src="wz-avatar.png" width="300" height="300" alt="">
     </button>
   </div>
   <p class="blessing" id="lampMsg">灯火未明 · 轻触点亮</p>
