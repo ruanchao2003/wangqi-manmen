@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#6B0A0E">
 <title>旺气满门 · 旺旺新春贺岁</title>
+<link rel="preload" as="image" href="puzzle-pic.jpg">
 <style>
 /* ============ 设计变量 ============ */
 :root{
@@ -579,11 +580,16 @@ button{font-family:inherit}
 /* ============ 09 拼图 ============ */
 .puzzle-wrap{margin-top:clamp(10px,2.4vh,20px);display:flex;flex-direction:column;align-items:center;gap:14px}
 .puzzle-board{
-  position:relative;width:min(64vw,240px);aspect-ratio:1;border-radius:8px;
-  background:rgba(30,2,4,.5);box-shadow:inset 0 0 0 1px rgba(240,201,123,.3),0 20px 40px -22px rgba(0,0,0,.9);
-  touch-action:none;
+  position:relative;width:min(70vw,262px);aspect-ratio:1;border-radius:10px;
+  background:rgba(30,2,4,.5);box-shadow:inset 0 0 0 1px rgba(255,226,170,.5),0 0 0 1px rgba(0,0,0,.45),0 20px 40px -22px rgba(0,0,0,.9);
+  touch-action:none;transition:box-shadow .8s var(--ease);
+}
+.puzzle-board.solved{
+  box-shadow:inset 0 0 0 1px rgba(255,226,170,.6),0 0 0 3px rgba(240,201,123,.22),
+    0 0 34px rgba(255,176,84,.42),0 20px 40px -22px rgba(0,0,0,.9);
 }
 .puzzle-grid{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.puzzle-grid{transition:opacity .8s var(--ease)}
 .puzzle-grid span{box-shadow:inset 0 0 0 .5px rgba(255,235,190,.12)}
 .piece{
   position:absolute;width:50%;height:50%;top:0;left:0;
@@ -594,6 +600,8 @@ button{font-family:inherit}
 }
 .piece.dragging{transition:none;z-index:9;cursor:grabbing;box-shadow:0 18px 30px -12px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,235,190,.5)}
 .piece.locked{box-shadow:inset 0 0 0 1px rgba(255,235,190,.25)}
+.puzzle-board.solved .puzzle-grid{opacity:0;transition:opacity .8s var(--ease)}
+.puzzle-board.solved .piece{box-shadow:none}
 .puzzle-tip{font-size:11.5px;letter-spacing:.2em;color:rgba(255,235,190,.55);text-align:center;min-height:1.4em}
 
 /* ============ 10 烟花 ============ */
@@ -1059,8 +1067,8 @@ button{font-family:inherit}
 <section class="slide s-puzzle" data-i="8">
   <div class="head">
     <span class="num">捌</span>
-    <h2 class="gold-text">把「旺」拼完整</h2>
-    <p>拖动任意两块交换位置，拼回完整图案</p>
+    <h2 class="gold-text">把旺仔拼完整</h2>
+    <p>拖动任意两块交换位置，拼回一整个旺仔</p>
   </div>
   <div class="puzzle-wrap">
     <div class="puzzle-board" id="puzzleBoard" data-nolock>
@@ -1857,23 +1865,7 @@ document.addEventListener('pointerdown',function(){ AC(); bgmPlay(); },{once:tru
 (function(){
   var board=$('#puzzleBoard'), tip=$('#puzzleTip');
   if(!board) return;
-  var PIC='<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">'
-    +'<defs><radialGradient id="pg" cx="50%" cy="34%" r="76%">'
-    +'<stop offset="0" stop-color="#C8171F"/><stop offset=".62" stop-color="#8E0D13"/><stop offset="1" stop-color="#5C0609"/></radialGradient>'
-    +'<linearGradient id="pgi" x1="0" y1="0" x2="1" y2="1">'
-    +'<stop offset="0" stop-color="#FFF6DC"/><stop offset=".45" stop-color="#EFC87C"/><stop offset="1" stop-color="#B9832F"/></linearGradient></defs>'
-    +'<rect width="640" height="640" fill="url(#pg)"/>'
-    +'<circle cx="320" cy="320" r="248" fill="none" stroke="#E8C07C" stroke-opacity=".34" stroke-width="2"/>'
-    +'<circle cx="320" cy="320" r="226" fill="none" stroke="#E8C07C" stroke-opacity=".16" stroke-width="1" stroke-dasharray="6 10"/>'
-    +'<g stroke="#EFC87C" stroke-opacity=".34" stroke-width="7" stroke-linecap="round" fill="none">'
-    +'<path d="M52 132c22-30 56-38 84-24 8-26 38-38 62-24 22-16 52-10 64 14"/>'
-    +'<path d="M588 132c-22-30-56-38-84-24-8-26-38-38-62-24-22-16-52-10-64 14"/>'
-    +'<path d="M52 512c22 30 56 38 84 24 8 26 38 38 62 24 22 16 52 10 64-14"/>'
-    +'<path d="M588 512c-22 30-56 38-84 24-8 26-38 38-62 24-22 16-52 10-64-14"/></g>'
-    +'<text x="320" y="432" text-anchor="middle" font-family="KaiTi,STKaiti,serif" font-size="330" fill="url(#pgi)" stroke="#8A5A1B" stroke-width="2">旺</text>'
-    +'<g fill="#F0C97B" fill-opacity=".5"><circle cx="320" cy="86" r="5"/><circle cx="320" cy="554" r="5"/><circle cx="86" cy="320" r="5"/><circle cx="554" cy="320" r="5"/></g>'
-    +'</svg>';
-  var url='url("data:image/svg+xml;charset=utf-8,'+encodeURIComponent(PIC)+'")';
+  var url='url("puzzle-pic.jpg")';   /* 旺仔比耶方图 640×640 */
   var cellOf=[1,0,3,2];   /* piece -> cell */
   var pieces=[], drag=null, solved=false;
 
@@ -1940,8 +1932,9 @@ document.addEventListener('pointerdown',function(){ AC(); bgmPlay(); },{once:tru
     if(ok){
       solved=true;
       pieces.forEach(function(d){ d.classList.add('locked'); });
-      tip.textContent='拼好了 · 旺字归位，福气入户';
-      award('puzzle','旺气 +1　·　旺字归位');
+      board.classList.add('solved');
+      tip.textContent='拼好了 · 旺仔归位，福气入户';
+      award('puzzle','旺气 +1　·　旺仔归位');
     }else{
       tip.textContent='已归位 '+right+' / 4 块 · 再调一调';
     }
