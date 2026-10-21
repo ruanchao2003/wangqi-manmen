@@ -190,8 +190,9 @@ button{font-family:inherit}
   color:rgba(255,235,190,.62);text-transform:uppercase;
 }
 /* 标题 logo 卡片：白底与素材严丝合缝，双层金线做“烫金卡”质感 */
+.cover-lockup{position:relative;z-index:3;display:flex;align-items:flex-end;justify-content:center}
 .cover-logo{
-  position:relative;z-index:3;width:min(76vw,304px);
+  position:relative;z-index:3;width:min(60vw,258px);
   padding:11px 13px;border-radius:12px;
   background:linear-gradient(152deg,#FDF5E4,#F3E0B8);
   border:1px solid rgba(198,152,76,.6);
@@ -202,6 +203,15 @@ button{font-family:inherit}
   content:"";position:absolute;inset:5px;border:1px solid rgba(198,152,76,.26);
   border-radius:9px;pointer-events:none;
 }
+/* 旺仔：站在卡片右下角，轻轻晃 */
+.cover-wangzai{
+  position:relative;z-index:4;
+  width:clamp(78px,21vw,100px);height:auto;margin-left:-14px;margin-bottom:1px;
+  filter:drop-shadow(0 12px 18px rgba(0,0,0,.55));
+  transform-origin:50% 92%;
+  animation:wzBob 4.8s ease-in-out infinite;
+}
+@keyframes wzBob{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(2deg) translateY(-5px)}}
 .cover-sub{
   margin:clamp(16px,3vh,26px) 0 0;
   font-family:var(--kai);font-size:clamp(13px,3.7vw,15.5px);
@@ -418,7 +428,8 @@ button{font-family:inherit}
   color:#8E0A10;
 }
 .scratch-under .su-k{font-size:10px;letter-spacing:.44em;opacity:.65}
-.scratch-under .su-big{font-family:var(--serif);font-size:clamp(30px,9vw,40px);letter-spacing:.1em;line-height:1.2;color:#B3121A}
+.scratch-under .su-pic{width:clamp(64px,17vw,82px);height:auto;margin:2px 0 4px;filter:drop-shadow(0 6px 10px rgba(120,60,20,.28))}
+.scratch-under .su-big{font-family:var(--serif);font-size:clamp(28px,8vw,36px);letter-spacing:.1em;line-height:1.2;color:#B3121A}
 .scratch-under .su-s{font-size:11.5px;letter-spacing:.16em;color:#7A4A18}
 #scratchCv{position:absolute;inset:0;z-index:2;cursor:crosshair;touch-action:none;transition:opacity .8s var(--ease)}
 #scratchCv.gone{opacity:0;pointer-events:none}
@@ -474,9 +485,10 @@ button{font-family:inherit}
   background:linear-gradient(90deg,transparent,rgba(240,201,123,.55),transparent);
 }
 .fall{
-  position:absolute;top:0;left:0;width:44px;height:44px;display:grid;place-items:center;
+  position:absolute;top:0;left:0;width:50px;height:50px;display:grid;place-items:center;
   will-change:transform;cursor:pointer;
 }
+.fall img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 5px 9px rgba(0,0,0,.55))}
 .fall svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))}
 .fall .ch{font-family:var(--serif);font-size:20px;color:#FFEFC6;text-shadow:0 0 12px rgba(255,190,100,.8)}
 .fall.pop{animation:popOut .3s ease-out forwards;pointer-events:none}
@@ -505,8 +517,8 @@ button{font-family:inherit}
   opacity:0;transition:opacity 1.1s var(--ease) .45s;
 }
 .doorway.open .door-light{opacity:1}
-.door-light .dl-fu{font-family:var(--kai);font-size:clamp(44px,13vw,58px);color:#B3121A;line-height:1;text-shadow:0 3px 0 rgba(255,255,255,.3)}
-.door-light .dl-t{font-size:10.5px;letter-spacing:.3em;color:#7A3210;margin-top:4px}
+.door-light .dl-wz{width:62%;max-width:168px;height:auto;filter:drop-shadow(0 8px 14px rgba(110,40,0,.35))}
+.door-light .dl-t{font-size:10px;letter-spacing:.26em;color:#7A3210;margin-top:2px}
 .door{
   position:absolute;top:0;height:100%;width:50%;z-index:3;
   background:
@@ -624,6 +636,7 @@ button{font-family:inherit}
 
 /* ============ 12 尾页 ============ */
 .end-inner{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;max-width:min(92vw,560px)}
+.end-wz{width:clamp(92px,24vw,116px);height:auto;margin-bottom:4px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.5));animation:wzBob 5.2s ease-in-out infinite}
 .end-title{font-family:var(--serif);font-size:clamp(38px,11vw,58px);letter-spacing:.1em;margin:12px 0 0;font-weight:600}
 .qi-box{
   margin-top:clamp(18px,3.4vh,28px);display:flex;flex-direction:column;align-items:center;gap:6px;
@@ -817,8 +830,11 @@ button{font-family:inherit}
     <span class="couplet right">财旺 福旺 运道旺</span>
   </div>
   <div class="cover-main">
-    <div class="cover-logo reveal" style="--d:0">
-      <img src="title-logo.jpg" width="1100" height="503" alt="旺气满门 · 旺旺新春贺岁">
+    <div class="cover-lockup reveal" style="--d:0">
+      <div class="cover-logo">
+        <img src="title-logo.jpg" width="1100" height="503" alt="旺气满门 · 旺旺新春贺岁">
+      </div>
+      <img class="cover-wangzai" src="wz-sparkler.png" alt="旺仔放烟花">
     </div>
     <div class="orn reveal" style="--d:1">
       <svg viewBox="0 0 160 12" fill="none"><path d="M0 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M102 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M80 1.5 85.5 6 80 10.5 74.5 6z" stroke="url(#gGold)" stroke-width="1"/><circle cx="68" cy="6" r="1.6" fill="#F0C97B"/><circle cx="92" cy="6" r="1.6" fill="#F0C97B"/></svg>
@@ -941,6 +957,7 @@ button{font-family:inherit}
   <div class="scratch-card" id="scratchCard" data-nolock>
     <div class="scratch-under">
       <span class="su-k">恭 喜 刮 中</span>
+      <img class="su-pic" src="p-gift.png" alt="旺旺大礼包">
       <span class="su-big">旺旺大礼包</span>
       <span class="su-s">凭此页，兑换一整年的好心情</span>
     </div>
@@ -973,7 +990,7 @@ button{font-family:inherit}
   <div class="head">
     <span class="num">陆</span>
     <h2 class="gold-text">接住落下来的旺</h2>
-    <p>15 秒内点中 8 枚，旺气才算接稳</p>
+    <p>15 秒内接住 8 件年货，旺气才算接稳</p>
   </div>
   <div class="catch-stage">
     <div class="catch-hud">
@@ -985,7 +1002,7 @@ button{font-family:inherit}
       <div class="base-line"></div>
       <div class="catch-msg" id="catchMsg">
         <div class="cm-in">
-          <p id="catchMsgText">指尖就是你的簸箕<br>点中金币、元宝与「旺」字</p>
+          <p id="catchMsgText">指尖就是你的簸箕<br>小馒头、小小酥、牛奶糖、大礼包，接住就旺</p>
           <button class="cta" id="catchStart">开 始 接 旺</button>
         </div>
       </div>
@@ -1004,8 +1021,8 @@ button{font-family:inherit}
   <div class="door-stage">
     <div class="doorway" id="doorway">
       <div class="door-light">
-        <span class="dl-fu">福</span>
-        <span class="dl-t">阖 家 团 圆</span>
+        <img class="dl-wz" src="wz-carp.png" alt="旺仔抱鲤鱼">
+        <span class="dl-t">年 年 有 余 · 旺 气 进 门</span>
       </div>
       <div class="door l">
         <svg class="ring" viewBox="0 0 40 40"><circle cx="20" cy="20" r="13"/><circle cx="20" cy="20" r="4"/></svg>
@@ -1085,7 +1102,7 @@ button{font-family:inherit}
 <section class="slide s-end" data-i="11">
   <div class="coin-rain" id="coinRain" aria-hidden="true"></div>
   <div class="end-inner">
-    <p class="eyebrow">WANG WANG · 新 春 快 乐</p>
+    <img class="end-wz" src="wz-scroll.png" alt="旺仔 大家旺">
     <h2 class="end-title gold-text">旺气满门</h2>
     <div class="orn">
       <svg viewBox="0 0 160 12" fill="none"><path d="M0 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M102 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M80 1.5 85.5 6 80 10.5 74.5 6z" stroke="url(#gGold)" stroke-width="1"/><circle cx="68" cy="6" r="1.6" fill="#F0C97B"/><circle cx="92" cy="6" r="1.6" fill="#F0C97B"/></svg>
@@ -1593,7 +1610,9 @@ document.addEventListener('pointerdown',function(){ AC(); bgmPlay(); },{once:tru
   var svg=$('#wheelSvg'), btn=$('#spinBtn'), tip=$('#wheelTip');
   if(!svg) return;
   var NS='http://www.w3.org/2000/svg';
-  var prizes=['旺旺大礼包','旺仔牛奶','金币满钵','雪饼一箱','福袋一个','再来一次'];
+  var prizes=['旺旺大礼包','旺仔小馒头','旺仔牛奶糖','旺旺小小酥','旺上加旺','再来一次'];
+  var labels=['大礼包','小馒头','牛奶糖','小小酥','旺上加旺','再来一次'];
+  var pics=['p-gift.png','p-mantou.png','p-candy.png','p-susu.png',null,null];
   var cx=110, cy=110, R=100;
   function mk(n,a){
     var e=document.createElementNS(NS,n);
@@ -1614,15 +1633,30 @@ document.addEventListener('pointerdown',function(){ AC(); bgmPlay(); },{once:tru
     var d='M'+cx+' '+cy+' L'+x0.toFixed(2)+' '+y0.toFixed(2)+
           ' A'+R+' '+R+' 0 0 1 '+x1.toFixed(2)+' '+y1.toFixed(2)+' Z';
     svg.appendChild(mk('path',{d:d,fill:i%2?'#8E0A11':'#B3121A',stroke:'#E8C07C','stroke-width':'1.2','stroke-opacity':'.65'}));
-    var ang=(-60+i*60)*Math.PI/180;
-    var tx=cx+Math.cos(ang)*64, ty=cy+Math.sin(ang)*64;
+    var mid=-60+i*60;
+    var ang=mid*Math.PI/180;
+    if(pics[i]){
+      var iw=38, ix=cx+Math.cos(ang)*74-iw/2, iy=cy+Math.sin(ang)*74-iw/2;
+      svg.appendChild(mk('image',{
+        href:pics[i], x:ix.toFixed(2), y:iy.toFixed(2), width:iw, height:iw,
+        preserveAspectRatio:'xMidYMid meet',
+        transform:'rotate('+(mid+90)+' '+(ix+iw/2).toFixed(2)+' '+(iy+iw/2).toFixed(2)+')'
+      }));
+    }else{
+      var gx=cx+Math.cos(ang)*74, gy=cy+Math.sin(ang)*74;
+      svg.appendChild(mk('circle',{cx:gx.toFixed(2),cy:gy.toFixed(2),r:'16',fill:'#F0C97B','fill-opacity':'.92',stroke:'#8A5A14','stroke-width':'1'}));
+      var gt=mk('text',{x:gx.toFixed(2),y:gy.toFixed(2),fill:'#8E0A10','font-size':'15','font-family':'KaiTi,STKaiti,serif','text-anchor':'middle','dominant-baseline':'central'});
+      gt.textContent=(i===4?'旺':'↻');
+      svg.appendChild(gt);
+    }
+    var tx=cx+Math.cos(ang)*48, ty=cy+Math.sin(ang)*48;
     var t=mk('text',{
       x:tx.toFixed(2), y:ty.toFixed(2), fill:'#FFF3D6',
-      'font-size':'10.6','font-family':'KaiTi,STKaiti,serif',
+      'font-size':'9.6','font-family':'KaiTi,STKaiti,serif',
       'text-anchor':'middle','dominant-baseline':'middle',
-      transform:'rotate('+(-60+i*60+90)+' '+tx.toFixed(2)+' '+ty.toFixed(2)+')'
+      transform:'rotate('+(mid+90)+' '+tx.toFixed(2)+' '+ty.toFixed(2)+')'
     });
-    t.textContent=prizes[i];
+    t.textContent=labels[i];
     svg.appendChild(t);
   }
   svg.appendChild(mk('circle',{cx:cx,cy:cy,r:R,fill:'url(#wSheen)'}));
@@ -1664,9 +1698,10 @@ document.addEventListener('pointerdown',function(){ AC(); bgmPlay(); },{once:tru
   var zone=$('#catchZone'), startBtn=$('#catchStart'), scoreEl=$('#catchScore');
   var timeEl=$('#catchTime'), bar=$('#catchBar'), msg=$('#catchMsg'), msgText=$('#catchMsgText');
   if(!zone||!startBtn) return;
-  var COIN='<svg viewBox="0 0 40 40"><use href="#coinSym"/></svg>';
-  var INGOT='<svg viewBox="0 0 48 38"><use href="#ingotSym"/></svg>';
-  var BADGE='<span class="ch">旺</span>';
+  var COIN='<img src="p-mantou.png" alt="">';
+  var INGOT='<img src="p-susu.png" alt="">';
+  var BADGE='<img src="p-candy.png" alt="">';
+  var GIFT='<img src="p-gift.png" alt="">';
   var playing=false, score=0, left=15, goal=8;
   var raf=0, lastT=0, spawnT=0, items=[], ticker=0, finished=false;
 
@@ -1684,10 +1719,10 @@ document.addEventListener('pointerdown',function(){ AC(); bgmPlay(); },{once:tru
     var el=document.createElement('div');
     el.className='fall';
     var k=Math.random();
-    el.innerHTML = k<0.44?COIN : (k<0.78?INGOT:BADGE);
+    el.innerHTML = k<0.32?COIN : (k<0.56?INGOT : (k<0.8?BADGE:GIFT));
     zone.appendChild(el);
     var w=zone.clientWidth;
-    var it={el:el,x:rnd(10,Math.max(20,w-54)),y:-48,vy:rnd(95,168),rot:rnd(-22,22),vrot:rnd(-46,46),alive:true};
+    var it={el:el,x:rnd(10,Math.max(20,w-60)),y:-54,vy:rnd(95,168),rot:rnd(-16,16),vrot:rnd(-38,38),alive:true};
     items.push(it);
     el.style.transform='translate('+it.x+'px,'+it.y+'px) rotate('+it.rot+'deg)';
   }
