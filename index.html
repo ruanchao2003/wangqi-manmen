@@ -358,7 +358,7 @@ button{font-family:inherit}
   box-shadow:0 0 0 4px rgba(255,222,170,.07), inset 0 0 20px rgba(0,0,0,.28);
 }
 .ef-emblem::before{content:"";position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(255,222,170,.32)}
-.ef-emblem span{font-family:var(--kai);font-size:31px;color:var(--gold-200);text-shadow:0 2px 8px rgba(0,0,0,.55)}
+.ef-emblem img{display:block;width:46px;height:auto;filter:drop-shadow(0 3px 7px rgba(0,0,0,.55))}
 .ef-year{
   position:absolute;left:0;right:0;top:calc(58% + 48px);text-align:center;
   font-size:8.5px;letter-spacing:.4em;text-indent:.4em;color:rgba(255,226,180,.5);
@@ -647,7 +647,8 @@ button{font-family:inherit}
   margin:0;font-family:var(--kai);font-size:13px;letter-spacing:.26em;color:#8E0A10;
   text-align:right;transform:translateZ(16px);
 }
-.letter .seal{position:absolute;right:16px;bottom:44px;transform:rotate(-7deg) translateZ(34px);width:34px;height:34px;font-size:19px}
+.letter .seal{position:absolute;right:16px;bottom:42px;transform:rotate(-7deg) translateZ(34px);width:40px;height:40px;font-size:19px}
+.letter .seal img{display:block;width:30px;height:auto}
 .letter h3{font-family:var(--serif);font-size:16px;letter-spacing:.3em;margin:9px 0 auto;color:#A6121B;transform:translateZ(20px)}
 .letter-depth{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 76% 14%,rgba(255,255,255,.7),transparent 46%)}
 
@@ -920,8 +921,8 @@ button{font-family:inherit}
         <ellipse cx="60" cy="44" rx="30" ry="7" fill="#6E360D"/>
         <ellipse cx="60" cy="44" rx="30" ry="7" fill="none" stroke="url(#gGold)" stroke-width="2.6"/>
         <rect x="36" y="134" width="48" height="7" rx="3.5" fill="url(#gGold2)" opacity=".85"/>
-        <rect x="44" y="78" width="32" height="36" rx="3.5" fill="#B3121A" stroke="#F0C97B" stroke-width="1.2"/>
-        <text x="60" y="104" text-anchor="middle" font-family="KaiTi,STKaiti,serif" font-size="21" fill="#FFF3D2">签</text>
+        <rect x="38" y="76" width="44" height="44" rx="4" fill="#B3121A" stroke="#F0C97B" stroke-width="1.3"/>
+        <image href="wang-gold.png" x="41" y="83" width="38" height="30" preserveAspectRatio="xMidYMid meet"/>
       </svg>
     </div>
     <div class="qian-result" id="qianRes">
@@ -952,7 +953,7 @@ button{font-family:inherit}
       <div class="env-pattern"></div>
       <div class="env-face">
         <div class="ef-border"></div>
-        <div class="ef-emblem"><span>旺</span></div>
+        <div class="ef-emblem"><img src="wang-gold.png" width="420" height="330" alt="旺"></div>
         <div class="ef-year">W A N G &nbsp; W A N G &nbsp; 2 0 2 7</div>
         <div class="ef-foot">压 岁 钱</div>
       </div>
@@ -1110,7 +1111,7 @@ button{font-family:inherit}
       <h3>新 岁 帖</h3>
       <p class="letter-text">新岁将至，愿你<br>米缸常满，红包常鼓<br>心里常亮着一盏灯<br>走到哪儿，都有人喊你吃饭</p>
       <p class="letter-sign">你旺 · 我旺 · 大家旺</p>
-      <div class="seal">旺</div>
+      <div class="seal"><img src="wang-gold.png" width="420" height="330" alt="旺"></div>
     </div>
   </div>
   <button class="cta ghost" id="copyBtn" style="margin-top:clamp(18px,3.4vh,28px)">收 下 这 句 祝 福</button>
