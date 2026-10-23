@@ -73,14 +73,12 @@ button{font-family:inherit}
 .hud-ico svg{width:17px;height:17px;display:block}
 .hud-snd{
   pointer-events:auto;width:34px;height:34px;border-radius:50%;cursor:pointer;
-  background:rgba(58,6,9,.5);border:1px solid rgba(240,201,123,.28);
-  color:var(--gold-200);font-size:14px;line-height:1;
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:0;border:0;background:none;line-height:0;
   transition:.3s var(--ease);
 }
-.hud-snd.off{opacity:.45;text-decoration:line-through}
+.hud-snd img{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}
+.hud-snd.off{opacity:.4;filter:grayscale(.7)}
 .hud-snd.on{
-  color:#FFF6DC;border-color:rgba(240,201,123,.6);
   box-shadow:0 0 0 1px rgba(240,201,123,.45), 0 0 16px rgba(240,201,123,.4);
 }
 .hud-snd.on::after{
@@ -167,6 +165,22 @@ button{font-family:inherit}
 }
 .cta.ghost::after{display:none}
 .cta.ghost:active{background:rgba(240,201,123,.1)}
+
+/* 设计图按钮：图片本身即按钮，去掉底与描边 */
+.cta.img-cta{
+  padding:0;border:0;background:none;box-shadow:none;border-radius:0;
+  overflow:visible;line-height:0;width:clamp(178px,50vw,216px);
+  letter-spacing:0;text-indent:0;font-size:0;
+}
+.cta.img-cta::after{display:none}
+.cta.img-cta img{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(0,0,0,.45))}
+.cta.img-cta:active{transform:scale(.95);box-shadow:none;background:none}
+.cta.img-cta[data-label]::after{
+  content:attr(data-label);display:block;width:100%;margin-top:8px;
+  position:static;transform:none;animation:none;background:none;
+  font-size:11px;line-height:1.4;letter-spacing:.22em;text-indent:.22em;
+  color:rgba(255,235,190,.72);
+}
 
 /* 继续提示 */
 .next-hint{
@@ -426,17 +440,13 @@ button{font-family:inherit}
   position:absolute;left:0;top:50%;transform:translate(0,-50%);
   width:38px;height:38px;border-radius:50%;
   display:grid;place-items:center;cursor:grab;touch-action:none;
-  font-family:var(--kai);font-size:14px;color:#7A0A10;
-  background:radial-gradient(circle at 34% 28%,#FFF9E4,#F0CB80 58%,#D3A04C);
-  box-shadow:0 6px 16px -6px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.55);
+  padding:0;background:none;box-shadow:none;line-height:0;
   z-index:6;
   will-change:transform;
 }
 .tear-tab:active{cursor:grabbing;transform:translate(0,-50%) scale(1.06)}
-.tear-tab::after{
-  content:"›";position:absolute;right:-11px;font-size:15px;color:rgba(255,228,170,.75);
-  animation:nudge 1.6s ease-in-out infinite;
-}
+.tear-tab img{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 12px rgba(0,0,0,.6))}
+.tear-tab::after{content:none;display:none}
 @keyframes nudge{0%,100%{transform:translateX(0);opacity:.4}50%{transform:translateX(5px);opacity:1}}
 .env-hint{margin-top:clamp(14px,3vh,22px);font-size:11.5px;letter-spacing:.24em;color:rgba(255,235,190,.5);text-align:center}
 .env-hint b{color:var(--gold-200);font-weight:600}
@@ -455,7 +465,7 @@ button{font-family:inherit}
 }
 .scratch-under .su-k{font-size:10px;letter-spacing:.44em;opacity:.65}
 .scratch-under .su-pic{width:clamp(64px,17vw,82px);height:auto;margin:2px 0 4px;filter:drop-shadow(0 6px 10px rgba(120,60,20,.28))}
-.scratch-under .su-big{font-family:var(--serif);font-size:clamp(28px,8vw,36px);letter-spacing:.1em;line-height:1.2;color:#B3121A}
+.scratch-under .su-big-img{display:block;width:clamp(152px,46vw,196px);height:auto;margin:4px auto 2px;filter:drop-shadow(0 4px 10px rgba(120,60,20,.28))}
 .scratch-under .su-s{font-size:11.5px;letter-spacing:.16em;color:#7A4A18}
 #scratchCv{position:absolute;inset:0;z-index:2;cursor:crosshair;touch-action:none;transition:opacity .8s var(--ease)}
 #scratchCv.gone{opacity:0;pointer-events:none}
@@ -478,13 +488,12 @@ button{font-family:inherit}
 }
 #wheelSvg{width:94%;height:94%;transition:transform 4.2s cubic-bezier(.12,.78,.06,1);will-change:transform;filter:drop-shadow(0 2px 6px rgba(80,0,0,.4))}
 .wheel-hub{
-  position:absolute;width:23%;aspect-ratio:1;border-radius:50%;
+  position:absolute;width:28%;aspect-ratio:1;border-radius:50%;
   display:grid;place-items:center;cursor:pointer;z-index:4;
-  background:radial-gradient(circle at 36% 30%,#FFF6DC,#F0C97B 52%,#C89040);
-  box-shadow:0 8px 20px -6px rgba(0,0,0,.8), inset 0 0 0 2px rgba(255,255,255,.45);
-  font-family:var(--kai);font-size:15px;letter-spacing:.06em;color:#8E0A10;
+  padding:0;border:0;background:none;box-shadow:none;line-height:0;
   transition:transform .3s var(--ease);
 }
+.wheel-hub img{width:100%;height:100%;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
 .wheel-hub:active{transform:scale(.94)}
 .wheel-pointer{
   position:absolute;top:-13px;left:50%;transform:translateX(-50%);z-index:5;
@@ -586,12 +595,10 @@ button{font-family:inherit}
 .latch-knob{
   position:absolute;top:5px;left:5px;width:42px;height:42px;border-radius:50%;
   display:grid;place-items:center;cursor:grab;touch-action:none;
-  background:radial-gradient(circle at 36% 30%,#FFF9E4,#F0C97B 54%,#CE9A46);
-  box-shadow:0 6px 16px -6px rgba(0,0,0,.85), inset 0 0 0 1px rgba(255,255,255,.5);
-  font-size:15px;color:#8E0A10;z-index:2;
+  padding:0;background:none;box-shadow:none;line-height:0;z-index:2;
 }
 .latch-knob:active{cursor:grabbing}
-.latch-knob svg{width:20px;height:20px}
+.latch-knob img{width:100%;height:100%;display:block;filter:drop-shadow(0 5px 12px rgba(0,0,0,.55))}
 
 /* ============ 09 拼图 ============ */
 .puzzle-wrap{margin-top:clamp(10px,2.4vh,20px);display:flex;flex-direction:column;align-items:center;gap:14px}
@@ -671,7 +678,7 @@ button{font-family:inherit}
 /* ============ 12 尾页 ============ */
 .end-inner{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;max-width:min(92vw,560px)}
 .end-wz{width:clamp(92px,24vw,116px);height:auto;margin-bottom:4px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.5));animation:wzBob 5.2s ease-in-out infinite}
-.end-title{font-family:var(--serif);font-size:clamp(38px,11vw,58px);letter-spacing:.1em;margin:12px 0 0;font-weight:600}
+.end-title-img{display:block;width:clamp(240px,66vw,292px);height:auto;margin:12px 0 0;filter:drop-shadow(0 8px 16px rgba(0,0,0,.45))}
 .qi-box{
   margin-top:clamp(18px,3.4vh,28px);display:flex;flex-direction:column;align-items:center;gap:6px;
   padding:16px 30px;border-radius:12px;
@@ -684,6 +691,7 @@ button{font-family:inherit}
 .end-words{margin:clamp(16px,3vh,24px) 0 0;font-family:var(--kai);font-size:clamp(13px,3.6vw,15px);letter-spacing:.16em;line-height:2;color:rgba(255,242,214,.78)}
 .end-actions{display:flex;gap:12px;margin-top:clamp(22px,3.6vh,30px);flex-wrap:wrap;justify-content:center}
 .end-actions .cta{padding:13px 26px;font-size:12.5px;letter-spacing:.2em}
+.end-actions .cta.img-cta{width:clamp(146px,40vw,168px);padding:0}
 .brand-badge{
   margin:clamp(18px,3.2vh,28px) auto 0;width:min(54vw,184px);
   padding:9px 14px;border-radius:10px;
@@ -769,6 +777,14 @@ button{font-family:inherit}
   .letter{aspect-ratio:1/1.2}
   .cover-sub{line-height:1.9}
 }
+@media (max-height:720px){
+  .end-wz{width:clamp(74px,20vw,96px)}
+  .end-title-img{width:clamp(206px,56vw,238px);margin-top:6px}
+  .end-actions{margin-top:clamp(14px,2.4vh,20px)}
+  .end-words{margin-top:clamp(10px,1.8vh,16px)}
+  .brand-badge{margin-top:clamp(12px,2vh,18px);width:min(46vw,158px)}
+  .qi-box{padding:10px 20px}
+}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.2s !important}
 }
@@ -846,7 +862,7 @@ button{font-family:inherit}
     <span class="hud-ico"><svg><use href="#coinSym"/></svg></span>
     <b id="qiVal">0</b><i>/ 10 旺气</i>
   </div>
-  <button class="hud-snd" id="sndBtn" aria-label="声音开关">♪</button>
+  <button class="hud-snd" id="sndBtn" aria-label="声音开关"><img src="ui-music.webp" width="104" height="103" alt=""></button>
 </div>
 
 <main id="stage">
@@ -874,7 +890,7 @@ button{font-family:inherit}
       <svg viewBox="0 0 160 12" fill="none"><path d="M0 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M102 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M80 1.5 85.5 6 80 10.5 74.5 6z" stroke="url(#gGold)" stroke-width="1"/><circle cx="68" cy="6" r="1.6" fill="#F0C97B"/><circle cx="92" cy="6" r="1.6" fill="#F0C97B"/></svg>
     </div>
     <p class="cover-sub reveal" style="--d:2">一盏灯，一纸红包，一句老话<br>愿你新岁：旺到家，旺到心里</p>
-    <button class="cta reveal" style="--d:3" data-next>轻 触 开 启</button>
+    <button class="cta img-cta reveal" style="--d:3" data-next><img src="ui-start.webp" width="520" height="147" alt="开始体验"></button>
     <p class="hint-up reveal" style="--d:4">上滑 / 滚动 进入</p>
   </div>
 </section>
@@ -976,7 +992,7 @@ button{font-family:inherit}
       <div class="env-flap"></div>
       <img class="env-caishen" src="wz-caishen.webp" width="360" height="504" alt="财神旺仔">
       <div class="tear-strip" id="tearStrip">
-        <div class="tear-tab" id="tearTab">撕</div>
+        <div class="tear-tab" id="tearTab"><img src="ui-tear.webp" width="112" height="112" alt="撕"></div>
       </div>
     </div>
   </div>
@@ -995,7 +1011,7 @@ button{font-family:inherit}
     <div class="scratch-under">
       <span class="su-k">恭 喜 刮 中</span>
       <img class="su-pic" src="p-gift.png" alt="旺旺大礼包">
-      <span class="su-big">旺旺大礼包</span>
+      <img class="su-big-img" src="tx-gift.webp" width="470" height="108" alt="旺旺大礼包">
       <span class="su-s">凭此页，兑换一整年的好心情</span>
     </div>
     <canvas id="scratchCv"></canvas>
@@ -1015,7 +1031,7 @@ button{font-family:inherit}
     <div class="wheel-ring">
       <div class="wheel-pointer"></div>
       <svg id="wheelSvg" viewBox="0 0 220 220" aria-hidden="true"></svg>
-      <button class="wheel-hub" id="spinBtn">转</button>
+      <button class="wheel-hub" id="spinBtn" aria-label="转"><img src="ui-spin.webp" width="170" height="168" alt="转"></button>
     </div>
   </div>
   <p class="wheel-tip" id="wheelTip">六 格 好 话 · 格 格 不 落 空</p>
@@ -1040,7 +1056,7 @@ button{font-family:inherit}
       <div class="catch-msg" id="catchMsg">
         <div class="cm-in">
           <p id="catchMsgText">指尖就是你的簸箕<br>小馒头、小小酥、牛奶糖、大礼包，接住就旺</p>
-          <button class="cta" id="catchStart">开 始 接 旺</button>
+          <button class="cta img-cta" id="catchStart"><img src="ui-catch.webp" width="470" height="119" alt="开始接旺"></button>
         </div>
       </div>
     </div>
@@ -1073,7 +1089,7 @@ button{font-family:inherit}
         <div class="latch-fill" id="latchFill"></div>
         <span class="latch-label">向 右 拖 动 开 门</span>
         <div class="latch-knob" id="latchKnob">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 7l5 5-5 5"/></svg>
+          <img src="ui-arrow.webp" width="120" height="120" alt="向右拖动">
         </div>
       </div>
     </div>
@@ -1140,7 +1156,7 @@ button{font-family:inherit}
   <div class="coin-rain" id="coinRain" aria-hidden="true"></div>
   <div class="end-inner">
     <img class="end-wz" src="wz-scroll.png" alt="旺仔 大家旺">
-    <h2 class="end-title gold-text">旺气满门</h2>
+    <img class="end-title-img" src="tx-end.webp" width="580" height="162" alt="旺气满门">
     <div class="orn">
       <svg viewBox="0 0 160 12" fill="none"><path d="M0 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M102 6h58" stroke="url(#gGold)" stroke-width="1"/><path d="M80 1.5 85.5 6 80 10.5 74.5 6z" stroke="url(#gGold)" stroke-width="1"/><circle cx="68" cy="6" r="1.6" fill="#F0C97B"/><circle cx="92" cy="6" r="1.6" fill="#F0C97B"/></svg>
     </div>
@@ -1150,8 +1166,8 @@ button{font-family:inherit}
     </div>
     <p class="end-words">愿你日日有旺，岁岁有余<br>门常开，人常聚，灯常亮</p>
     <div class="end-actions">
-      <button class="cta" id="againBtn">再 旺 一 次</button>
-      <button class="cta ghost" id="shareBtn">复 制 祝 福</button>
+      <button class="cta img-cta" id="againBtn"><img src="ui-again.webp" width="440" height="121" alt="再旺一次"></button>
+      <button class="cta img-cta" id="shareBtn"><img src="ui-copy.webp" width="440" height="128" alt="复制祝福"></button>
     </div>
     <div class="brand-badge">
       <img src="brand-logo.png" width="182" height="58" alt="旺旺 WANT WANT CHINA">
@@ -1823,15 +1839,15 @@ document.addEventListener('pointerdown',function(){ AC(); bgmPlay(); },{once:tru
     msg.classList.remove('hide');
     if(win){
       msgText.innerHTML='接稳了 '+score+' 枚 · 旺气入库<br>这一年，你旺得很有底气';
-      startBtn.textContent='再 接 一 次';
+      startBtn.setAttribute('data-label','再 接 一 次');
       award('catch','旺气 +1　·　接住 8 枚旺气');
     }else{
       msgText.innerHTML='接住 '+score+' 枚，还差 '+(goal-score)+' 枚<br>旺气有点滑，再来一次？';
-      startBtn.textContent='再 试 一 次';
+      startBtn.setAttribute('data-label','再 试 一 次');
       sfx.pop();
     }
   }
-  startBtn.addEventListener('click',function(e){ e.stopPropagation(); start(); });
+  startBtn.addEventListener('click',function(e){ e.stopPropagation(); startBtn.removeAttribute('data-label'); start(); });
   onLeave[6]=function(){
     if(playing||ticker){ stop(); }
     if(!finished){ msg.classList.remove('hide'); }
